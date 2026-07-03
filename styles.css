@@ -16,13 +16,13 @@
 
 [data-theme="dark"] {
   color-scheme: dark;
-  --bg: #101317;
-  --surface: rgba(22, 26, 32, 0.78);
-  --surface-strong: #171c23;
+  --bg: #050914;
+  --surface: rgba(8, 14, 28, 0.28);
+  --surface-strong: rgba(8, 14, 28, 0.38);
   --text: #edf1f7;
-  --muted: #9aa6b8;
-  --line: rgba(237, 241, 247, 0.14);
-  --shadow: 0 22px 60px rgba(0, 0, 0, 0.34);
+  --muted: #b1bad0;
+  --line: rgba(225, 235, 255, 0.2);
+  --shadow: 0 22px 60px rgba(0, 0, 0, 0.38);
 }
 
 * {
@@ -38,6 +38,7 @@ html {
 }
 
 body {
+  position: relative;
   margin: 0;
   min-height: 100vh;
   background:
@@ -46,6 +47,13 @@ body {
     linear-gradient(135deg, var(--bg), color-mix(in srgb, var(--bg) 84%, #ffffff 16%));
   color: var(--text);
   font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", Arial, sans-serif;
+}
+
+[data-theme="dark"] body {
+  background:
+    radial-gradient(circle at 20% 18%, rgba(94, 146, 255, 0.16), transparent 22rem),
+    radial-gradient(circle at 78% 28%, rgba(20, 184, 166, 0.12), transparent 24rem),
+    linear-gradient(180deg, #020611 0%, #061229 54%, #030610 100%);
 }
 
 body::before {
@@ -58,6 +66,62 @@ body::before {
     linear-gradient(90deg, rgba(104, 116, 137, 0.09) 1px, transparent 1px);
   background-size: 44px 44px;
   mask-image: linear-gradient(to bottom, black, transparent 86%);
+}
+
+[data-theme="dark"] body::before {
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.95) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 38% 72%, rgba(175, 214, 255, 0.8) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 68% 32%, rgba(255, 255, 255, 0.92) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 88% 64%, rgba(183, 255, 235, 0.78) 0 1px, transparent 1.6px);
+  background-size: 190px 170px, 260px 220px, 330px 280px, 420px 360px;
+  background-position: 0 0, 38px 74px, 120px 24px, 20px 140px;
+  mask-image: none;
+  opacity: 0.72;
+  animation: starTwinkle 4.8s ease-in-out infinite alternate;
+}
+
+[data-theme="dark"] body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 24% 34%, rgba(255, 255, 255, 0.92) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 52% 18%, rgba(185, 211, 255, 0.72) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 72% 76%, rgba(255, 255, 255, 0.84) 0 1.2px, transparent 2px),
+    radial-gradient(circle at 94% 22%, rgba(210, 255, 243, 0.76) 0 1px, transparent 1.6px);
+  background-size: 240px 210px, 310px 270px, 460px 360px, 560px 430px;
+  background-position: 80px 40px, 10px 120px, 140px 0, 40px 60px;
+  opacity: 0.44;
+  animation: starTwinkleSoft 6.2s ease-in-out infinite alternate;
+}
+
+@keyframes starTwinkle {
+  0% {
+    opacity: 0.45;
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    opacity: 0.92;
+  }
+
+  100% {
+    opacity: 0.58;
+    transform: translate3d(0, -8px, 0);
+  }
+}
+
+@keyframes starTwinkleSoft {
+  0% {
+    opacity: 0.28;
+  }
+
+  100% {
+    opacity: 0.74;
+  }
 }
 
 a {
@@ -216,15 +280,6 @@ h1 {
   line-height: 1.72;
 }
 
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 22px;
-}
-
-.primary-action,
-.secondary-action,
 .dialog-actions a,
 .dialog-actions button {
   display: inline-flex;
@@ -236,12 +291,6 @@ h1 {
   font-weight: 800;
 }
 
-.primary-action {
-  background: var(--text);
-  color: var(--bg);
-}
-
-.secondary-action,
 .dialog-actions button,
 .dialog-actions a {
   border: 1px solid var(--line);
@@ -340,6 +389,28 @@ h1 {
   height: 160px;
   border: 24px solid color-mix(in srgb, var(--course-color) 20%, transparent);
   border-radius: 50%;
+}
+
+[data-theme="dark"] .course-card,
+[data-theme="dark"] .resource-card,
+[data-theme="dark"] .resource-canvas,
+[data-theme="dark"] .showcase-course-section,
+[data-theme="dark"] .showcase-card {
+  background: transparent;
+  backdrop-filter: blur(4px);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .resource-canvas,
+[data-theme="dark"] .showcase-course-section {
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--canvas-color, var(--course-color, var(--green))) 12%, transparent), transparent 58%);
+}
+
+[data-theme="dark"] .course-card:hover,
+[data-theme="dark"] .resource-card:hover,
+[data-theme="dark"] .resource-canvas:hover {
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.26);
 }
 
 .course-code {
