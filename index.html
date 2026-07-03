@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>智慧交通期末资料库</title>
+    <meta name="description" content="地理信息系统、运筹学、交通大数据技术期末复习资料。">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="智慧交通期末资料库">
+          <img class="seal-mark" src="assets/sysu-emblem.png" alt="" aria-hidden="true">
+          <span>
+            <strong>智慧交通期末资料库</strong>
+            <small>复习入口</small>
+          </span>
+        </a>
+        <nav class="nav-links" aria-label="页面导航">
+          <a href="#courses">科目</a>
+          <a href="#resources">资料</a>
+        </nav>
+        <button class="icon-button" id="themeToggle" type="button" aria-label="切换主题" title="切换主题">
+          <span class="sun" aria-hidden="true"></span>
+        </button>
+      </header>
+
+      <main id="top">
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">中山大学期末复习</p>
+            <h1>是否还找不到合适的资料？</h1>
+            <p class="lead">
+              地理信息系统、运筹学、交通大数据技术，按科目和资料类型拆好分块，打开、预览、标记进度都在同一页完成。
+            </p>
+            <div class="hero-actions">
+              <a class="primary-action" href="#resources">开始复习</a>
+              <button class="secondary-action" type="button" id="randomPick">抽一份资料</button>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <img src="assets/study-map.png" alt="地理信息系统、运筹学、交通大数据技术复习资料地图">
+          </div>
+        </section>
+
+        <section class="course-section" id="courses">
+          <div class="section-heading">
+            <p class="eyebrow">课程分区</p>
+            <h2>科目分块</h2>
+          </div>
+          <div class="course-grid" id="courseGrid"></div>
+        </section>
+
+        <section class="resource-section" id="resources">
+          <div class="section-heading">
+            <p class="eyebrow">资料总览</p>
+            <h2>资料库</h2>
+          </div>
+
+          <div class="tool-row">
+            <label class="search-box" for="searchInput">
+              <span aria-hidden="true"></span>
+              <input id="searchInput" type="search" autocomplete="off" placeholder="搜索资料、科目、套卷">
+            </label>
+            <div class="filters" id="filters" aria-label="资料筛选">
+              <button class="filter-chip active" type="button" data-filter="all">全部</button>
+              <button class="filter-chip" type="button" data-filter="paper">试卷</button>
+              <button class="filter-chip" type="button" data-filter="summary">总结</button>
+              <button class="filter-chip" type="button" data-filter="GIS">地理信息系统</button>
+              <button class="filter-chip" type="button" data-filter="OR">运筹学</button>
+              <button class="filter-chip" type="button" data-filter="TD">交通大数据技术</button>
+            </div>
+          </div>
+
+          <div class="resource-canvas-grid" id="resourceGrid"></div>
+          <p class="empty-state" id="emptyState" hidden>没有匹配的资料。</p>
+        </section>
+
+      </main>
+    </div>
+
+    <div class="feature-rail" aria-label="功能栏">
+      <button class="agent-launcher" id="agentLauncher" type="button" aria-haspopup="dialog" aria-controls="agentDialog" title="来跟我聊天">
+        <span class="agent-glyph" aria-hidden="true"></span>
+        <span>来跟我聊天</span>
+      </button>
+    </div>
+
+    <dialog class="preview-dialog" id="previewDialog">
+      <div class="dialog-top">
+        <div>
+          <small id="previewCourse"></small>
+          <h3 id="previewTitle">资料预览</h3>
+        </div>
+        <button class="icon-button" type="button" id="closePreview" aria-label="关闭预览" title="关闭预览">
+          <span class="close-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+      <iframe id="previewFrame" title="资料预览"></iframe>
+      <div class="dialog-actions">
+        <a id="openPreview" href="#" target="_blank" rel="noreferrer">新窗口打开</a>
+        <a id="downloadPreview" href="#" download>下载资料</a>
+        <button type="button" id="copyPath">复制路径</button>
+      </div>
+    </dialog>
+
+    <dialog class="showcase-drawer" id="showcaseDrawer">
+      <div class="showcase-shell">
+        <div class="showcase-top">
+          <div>
+            <small id="showcaseMeta">资料展示柜</small>
+            <h3 id="showcaseTitle">资料展示柜</h3>
+          </div>
+          <button class="icon-button" type="button" id="closeShowcase" aria-label="关闭展示柜" title="关闭展示柜">
+            <span class="close-icon" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="showcase-stats" id="showcaseStats"></div>
+        <div class="showcase-grid" id="showcaseGrid"></div>
+        <p class="empty-state showcase-empty" id="showcaseEmpty" hidden>这个展示柜里暂时没有匹配资料。</p>
+      </div>
+    </dialog>
+
+    <dialog class="agent-dialog" id="agentDialog">
+      <div class="agent-shell">
+        <div class="agent-top">
+          <div>
+            <small id="agentStatus">等待连接</small>
+            <h3>来跟我聊天</h3>
+          </div>
+          <button class="icon-button" type="button" id="closeAgent" aria-label="关闭聊天" title="关闭聊天">
+            <span class="close-icon" aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <div class="agent-context" aria-label="Agent 知识来源">
+          <span>本地资料库</span>
+          <span>外部知识库</span>
+          <span>PPT 上传</span>
+        </div>
+
+        <div class="agent-prompts" aria-label="快捷提问">
+          <button type="button" data-agent-prompt="结合资料库内容，帮我列出最适合先看的总结和套卷。">资料优先级</button>
+          <button type="button" data-agent-prompt="我上传课件后，请帮我提炼重点、可能考点和速记口诀。">提炼课件</button>
+          <button type="button" id="generateQuiz">自主出题</button>
+        </div>
+
+        <div class="agent-messages" id="agentMessages" aria-live="polite"></div>
+
+        <section class="agent-quiz" id="agentQuiz" hidden aria-label="自主出题">
+          <div class="quiz-head">
+            <span id="quizSource">题目生成</span>
+            <button type="button" id="nextQuiz">再出一题</button>
+          </div>
+          <h4 id="quizQuestion"></h4>
+          <div class="quiz-options" id="quizOptions"></div>
+          <p class="quiz-feedback" id="quizFeedback" hidden></p>
+        </section>
+
+        <form class="agent-composer" id="agentForm">
+          <div class="agent-files" id="agentFiles" hidden></div>
+          <div class="agent-input-row">
+            <label class="agent-upload" for="agentUpload" title="上传 PPT、PPTX、PDF 或文本资料">
+              <span class="upload-glyph" aria-hidden="true"></span>
+              <span>上传资料</span>
+            </label>
+            <input id="agentUpload" type="file" accept=".ppt,.pptx,.pdf,.txt,.md,.csv,.json" multiple hidden>
+            <textarea id="agentInput" rows="2" placeholder="问复习重点、让它结合资料库和课件整理答案"></textarea>
+            <button class="agent-send" id="agentSend" type="submit">发送</button>
+          </div>
+        </form>
+      </div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
