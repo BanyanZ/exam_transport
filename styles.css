@@ -133,28 +133,6 @@ input {
   box-shadow: 0 0 0 1px rgba(0, 107, 84, 0.18);
 }
 
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--surface);
-}
-
-.nav-links a {
-  padding: 8px 12px;
-  border-radius: 6px;
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.nav-links a:hover {
-  background: color-mix(in srgb, var(--blue) 10%, transparent);
-  color: var(--text);
-}
-
 .author-badge {
   display: inline-flex;
   align-items: center;
@@ -1254,8 +1232,7 @@ h1 {
     font-size: 12px;
   }
 
-  .brand small,
-  .nav-links {
+  .brand small {
     display: none;
   }
 
