@@ -767,12 +767,6 @@ showcaseDrawer.addEventListener("close", () => {
   state.showcaseType = null;
 });
 
-document.querySelector("#randomPick").addEventListener("click", () => {
-  const pool = getVisibleResources();
-  const item = pool[Math.floor(Math.random() * pool.length)] || resources[0];
-  openResourcePreview(item);
-});
-
 document.querySelector("#closePreview").addEventListener("click", () => {
   previewDialog.close();
 });
