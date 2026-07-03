@@ -102,9 +102,8 @@ const agentState = {
 };
 
 const isLocalHost = ["localhost", "127.0.0.1"].includes(location.hostname);
-const API_BASE = location.protocol === "file:" || (isLocalHost && location.port !== "5173")
-  ? "http://127.0.0.1:5173"
-  : "";
+const isBackendOrigin = isLocalHost && location.port === "5173";
+const API_BASE = isBackendOrigin ? "" : "http://127.0.0.1:5173";
 
 function typeLabel(type) {
   return type === "paper" ? "试卷" : "总结";
