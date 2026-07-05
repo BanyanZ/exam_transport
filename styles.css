@@ -334,6 +334,11 @@ h1 {
   padding: 48px 0 72px;
 }
 
+.section-anchor {
+  display: block;
+  scroll-margin-top: 84px;
+}
+
 .section-heading {
   display: flex;
   align-items: end;
