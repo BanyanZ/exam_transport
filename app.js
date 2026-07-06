@@ -23,6 +23,14 @@ const courses = {
     color: "#e05f48",
     intro: "课程总结、复习题解答和 7 套生成版试卷。",
   },
+  IV: {
+    code: "IV",
+    badge: "车联",
+    full: "车联网技术",
+    english: "Internet of Vehicles",
+    color: "#5b68d8",
+    intro: "重点总结、课件画图部分汇总和 6 套车联网试卷。",
+  },
   MAO: {
     code: "MAO",
     badge: "毛概",
@@ -63,6 +71,15 @@ const resources = [
   { id: "td-paper-5", course: "TD", type: "paper", section: "试卷（生成版）", title: "交通大数据技术复习试卷第五套", path: "TD期末/试卷（AI生成）/交通大数据技术复习试卷第五套.pdf" },
   { id: "td-paper-6", course: "TD", type: "paper", section: "试卷（生成版）", title: "交通大数据技术复习试卷第六套", path: "TD期末/试卷（AI生成）/交通大数据技术复习试卷第六套.pdf" },
   { id: "td-paper-7", course: "TD", type: "paper", section: "试卷（生成版）", title: "交通大数据技术复习试卷第七套", path: "TD期末/试卷（AI生成）/交通大数据技术复习试卷第七套.pdf" },
+
+  { id: "iv-summary-1", course: "IV", type: "summary", section: "总结", title: "车联网技术重点总结", path: "IV期末/总结/车联网技术重点总结.pdf" },
+  { id: "iv-summary-2", course: "IV", type: "summary", section: "总结", title: "车联网课件画图部分汇总", path: "IV期末/总结/车联网课件画图部分汇总.pdf" },
+  { id: "iv-paper-1", course: "IV", type: "paper", section: "试卷", title: "车联网技术复习试卷第一套", path: "IV期末/试卷/车联网1.pdf" },
+  { id: "iv-paper-2", course: "IV", type: "paper", section: "试卷", title: "车联网技术复习试卷第二套", path: "IV期末/试卷/车联网2.pdf" },
+  { id: "iv-paper-3", course: "IV", type: "paper", section: "试卷", title: "车联网技术复习试卷第三套", path: "IV期末/试卷/车联网3.pdf" },
+  { id: "iv-paper-4", course: "IV", type: "paper", section: "试卷", title: "车联网技术复习试卷第四套", path: "IV期末/试卷/车联网4.pdf" },
+  { id: "iv-paper-5", course: "IV", type: "paper", section: "试卷", title: "车联网技术复习试卷第五套", path: "IV期末/试卷/车联网5.pdf" },
+  { id: "iv-paper-6", course: "IV", type: "paper", section: "试卷", title: "车联网技术复习试卷第六套", path: "IV期末/试卷/车联网6.pdf" },
 
   { id: "mao-summary-1", course: "MAO", type: "summary", section: "总结", title: "毛概重点背诵内容", path: "毛概期末/总结/毛概重点背诵内容.pdf" },
   { id: "mao-summary-2", course: "MAO", type: "summary", section: "总结", title: "毛概复习重点 2023", path: "毛概期末/总结/毛概复习重点2023.pdf" },
